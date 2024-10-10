@@ -18,14 +18,7 @@ namespace AreaCalculator.Helpers
 
         public static double Recognize(double[] vals)
         {
-            if (vals.Count() == 0)
-                throw new ArgumentException("Не найдено ни одного параметра");
-
-            if (vals.Length == 1)
-                return Circle(vals[0]);
-            if (vals.Length == 3)
-                return Triangle(vals[0], vals[1], vals[2]);
-            throw new ArgumentException("Распознать фигуру по входным данным не удалось");
+            return RecognizeHelper.Recognizer(vals);
         }
     }
 }

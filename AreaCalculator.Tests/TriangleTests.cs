@@ -25,16 +25,6 @@ namespace AreaCalculator.Tests
             Assert.Equal(exact, value);
         }
 
-        [Theory]
-        [InlineData(3, 4, 5)]
-        [InlineData(1200, 600, 800)]
-        public void TestUncnownLikeTriangle(double side1, double side2, double side3)
-        {
-            var exact = ExactTestAreaHelper.TriangleArea(side1, side2, side3);
-            var value = AreaCalcHelper.Recognize([side1, side2, side3], Enums.TypeOfFigure.Triangle);
-            Assert.Equal(exact, value);
-        }
-
         [Fact]
         public void TestTriangleThrowExceptionWhenNegativeSide()
         {
@@ -50,13 +40,13 @@ namespace AreaCalculator.Tests
         [Fact]
         public void TestUncnownWhenInvalidInput()
         {
-            Assert.Throws<ArgumentException>(() => AreaCalcHelper.Recognize([2, 2], Enums.TypeOfFigure.Triangle)); // Недостаток параметров
+            Assert.Throws<ArgumentException>(() => AreaCalcHelper.Recognize([2, 2])); // Недостаток параметров
         }
 
         [Fact]
         public void TestUncnownWhenUnrecognizedInput()
         {
-            Assert.Throws<ArgumentException>(() => AreaCalcHelper.Recognize([2, 2, 2, 2], Enums.TypeOfFigure.Triangle)); // Лишние параметры
+            Assert.Throws<ArgumentException>(() => AreaCalcHelper.Recognize([2, 2, 2, 2])); // Лишние параметры
         }
     }
 }

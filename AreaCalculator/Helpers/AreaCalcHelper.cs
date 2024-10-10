@@ -1,5 +1,4 @@
 ﻿using AreaCalculator.AreaCalculators;
-using AreaCalculator.Enums;
 
 namespace AreaCalculator.Helpers
 {
@@ -17,30 +16,11 @@ namespace AreaCalculator.Helpers
             return triangle.Area();
         }
 
-        public static double Recognize(double[] vals, TypeOfFigure type = TypeOfFigure.Uncnown)
+        public static double Recognize(double[] vals)
         {
             if (vals.Count() == 0)
                 throw new ArgumentException("Не найдено ни одного параметра");
 
-            switch (type)
-            {
-                case TypeOfFigure.Circle:
-                    if (vals.Count() != 1)
-                        throw new ArgumentException("Ошибка в параметрах для окружности");
-                    return Circle(vals[0]);
-                case TypeOfFigure.Triangle:
-                    if (vals.Count() != 3)
-                        throw new ArgumentException("Ошибка в параметрах для треугольника");
-                    return Triangle(vals[0], vals[1], vals[2]);
-                case TypeOfFigure.Uncnown:
-                    return Recognizer(vals);
-                default:
-                    return 0;
-            }
-        }
-
-        private static double Recognizer(double[] vals)
-        {
             if (vals.Length == 1)
                 return Circle(vals[0]);
             if (vals.Length == 3)

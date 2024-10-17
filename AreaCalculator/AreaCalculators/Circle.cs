@@ -15,7 +15,7 @@
             return Math.PI * (_radius * _radius);
         }
 
-        override protected bool IsValidFigure()
+        private bool IsValidFigure()
         {
             if (_radius <= 0)
                 return false;

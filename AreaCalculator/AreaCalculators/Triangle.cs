@@ -33,7 +33,7 @@
             _isRightTriangle = IsRightTriangle();
         }
 
-        override protected bool IsValidFigure()
+        private bool IsValidFigure()
         {
             if (_side2 <= 0 || _side3 <= 0 || _side1 <= 0)
                 return false;
@@ -45,18 +45,28 @@
         override public double Area()
         {
             if (_isRightTriangle){
-                return 0.5 * _side2 * _side3;
+                return CalculateAreaForRightTriangle();
             }
             else
             {
-                var pHalf = (_side1 + _side2 + _side3) / 2;
-                return Math.Sqrt(pHalf * (pHalf - _side1) * (pHalf - _side2) * (pHalf - _side3));
+                return CalculateAreaForAnyTriangle();
             }
         }
 
         private bool IsRightTriangle()
         {
             return Math.Abs(Math.Pow(_side1, 2) - (Math.Pow(_side2, 2) + Math.Pow(_side3, 2))) < 1e-10;
+        }
+
+        private double CalculateAreaForRightTriangle()
+        {
+            return 0.5 * _side2 * _side3;
+        }
+
+        private double CalculateAreaForAnyTriangle()
+        {
+            var pHalf = (_side1 + _side2 + _side3) / 2;
+            return Math.Sqrt(pHalf * (pHalf - _side1) * (pHalf - _side2) * (pHalf - _side3));
         }
     }
 }

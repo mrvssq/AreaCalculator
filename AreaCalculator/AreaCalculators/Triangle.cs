@@ -44,13 +44,10 @@
 
         override public double Area()
         {
-            if (_isRightTriangle){
+            if (_isRightTriangle)
                 return CalculateAreaForRightTriangle();
-            }
             else
-            {
                 return CalculateAreaForAnyTriangle();
-            }
         }
 
         private bool IsRightTriangle()

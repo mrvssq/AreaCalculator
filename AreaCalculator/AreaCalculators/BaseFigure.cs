@@ -1,8 +1,7 @@
 ﻿namespace AreaCalculator.AreaCalculators
 {
-    abstract class BaseFigure
+    abstract internal class BaseFigure
     {
         abstract public double Area();
-        abstract protected bool IsValidFigure();
     }
 }
